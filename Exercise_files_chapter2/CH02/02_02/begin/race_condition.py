@@ -33,5 +33,5 @@ if __name__ == '__main__':
     for s in shoppers:
         s.start()
     for s in shoppers:
-        s.join()
+        s.join() # this is about joining the MAIN thread
     print('We need to buy', bags_of_chips, 'bags of chips.')
