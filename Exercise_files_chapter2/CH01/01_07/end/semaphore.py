@@ -5,7 +5,7 @@ import random
 import threading
 import time
 
-charger = threading.Semaphore(1)
+charger = threading.Semaphore(4)
 
 def cellphone():
     name = threading.current_thread().getName()

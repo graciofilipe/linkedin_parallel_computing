@@ -6,7 +6,7 @@ import threading
 import time
 import multiprocessing as mp
 
-serving_line = mp.Queue(5)
+serving_line = mp.Queue(50)
 
 def cpu_work(work_units):
     x = 0
@@ -14,7 +14,7 @@ def cpu_work(work_units):
         x += 1
 
 def soup_producer(serving_line):
-    for i in range(20): # serve 20 bowls of soup
+    for i in range(200): # serve 20 bowls of soup
         serving_line.put_nowait('Bowl #'+str(i))
         print('Served Bowl #', str(i), '- remaining capacity:', \
             serving_line._maxsize-serving_line.qsize())
@@ -28,7 +28,7 @@ def soup_consumer(serving_line):
         if bowl == 'no soup for you!':
             break
         print('Ate', bowl)
-        cpu_work(5) # time to eat a bowl of soup
+        cpu_work(10) # time to eat a bowl of soup
 
 if __name__ == '__main__':
     for i in range(2):

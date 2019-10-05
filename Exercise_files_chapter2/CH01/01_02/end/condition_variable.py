@@ -21,4 +21,5 @@ def hungry_person(person_id):
 
 if __name__ == '__main__':
     for i in range(5):
+        print(f'creating thread {i}')
         threading.Thread(target=hungry_person, args=(i,)).start()
